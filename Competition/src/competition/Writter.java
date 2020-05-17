@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package shapes;
+package competition;
 
 /**
  *
  * @author Honzik note
  */
-public abstract class Compare{
-    
+public abstract class Writter {
+    public abstract void saveResults(String result)
 }

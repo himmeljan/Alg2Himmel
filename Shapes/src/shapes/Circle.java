@@ -12,6 +12,7 @@ package shapes;
 public class Circle extends Shape { //typove kompatibilni s shape
     //data
     private double r;
+   
     
     
    // public Circle(double r){
@@ -38,9 +39,10 @@ public class Circle extends Shape { //typove kompatibilni s shape
     @Override
     public String toString() {
        // return "Circle{" + "r=" + r + '}';
-       return super.toString() +String.format(" r= .2f%", r);
+       return super.toString() +String.format(" S = %.2f", computeArea());
     }
     
+    @Override
     public double computeArea(){
         return Math.PI*r*r;
     }
@@ -49,7 +51,18 @@ public class Circle extends Shape { //typove kompatibilni s shape
         Circle c1 = Circle.getInstanceR(3);
         System.out.println(c1.name);
         System.out.println(c1.getShapeName());
+        System.out.println(c1.computeArea());
         System.out.println(c1);
         
+    }
+
+    @Override
+    public boolean isBigger() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean compareto(Shape s, Shape i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

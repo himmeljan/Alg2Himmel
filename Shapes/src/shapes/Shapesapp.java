@@ -5,12 +5,13 @@ package shapes;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import interfacevariant.Shapeinterface;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
- * @author janka
+ * @author jan.himmel
  */
 public class Shapesapp {
 
@@ -18,7 +19,7 @@ public class Shapesapp {
 
     public static void main(String[] args) {
 
-        ArrayList<Shapeinterface> shapes = new ArrayList<>();
+        ArrayList<Shape> shapes = new ArrayList<>();
 
         boolean menu = true;
         while (menu) {
@@ -37,7 +38,7 @@ public class Shapesapp {
                     System.out.println("prumer");
                     double d = sc.nextDouble();
                     Circle c1 = Circle.getIstanceD(d);
-                    shapes.add(c1);
+                    shapes.add( c1);
                     break;
                 case 2:
                     System.out.println("delku a sirku");

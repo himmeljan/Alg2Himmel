@@ -19,7 +19,7 @@ public class MyComparing {
     public static sort(Students[] array){
         for(int i=0;i<array.length-1;i++){
              for(int j=1;j<array.length-i;j++){
-            if(array[j-1].isBigger(array))
+            if(array[j-1].isBigger(array)){
         }
     }
     

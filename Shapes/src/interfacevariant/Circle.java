@@ -39,8 +39,8 @@ public class Circle implements Shapeinterface { //typove kompatibilni s shape
 
     @Override
     public String toString() {
-       return "Circle{" + "r=" + r + '}';
-       // return super.toString() +String.format(" r= .2f%", r);
+      // return "Circle{" + "r=" + r + '}';
+       return super.toString() +String.format(" r= .2f%", r);
     }
     
     public double computeArea(){
@@ -52,6 +52,11 @@ public class Circle implements Shapeinterface { //typove kompatibilni s shape
        // System.out.println(c1.name);
        // System.out.println(c1.getShapeName());
         System.out.println(c1);
+        
+    }
+
+    @Override
+    public boolean isBigger() {
         
     }
 }

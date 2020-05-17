@@ -45,6 +45,11 @@ public class Rectangle implements Shapeinterface  {
        // return "Rectangle{" + "a=" + a + ", b=" + b + '}';
      return super.toString() +String.format(" r= .2f%,= .2f% ", a,b);
     }
+
+    @Override
+    public boolean isBigger(Shapeinterface o) {
+        return (this.area>o.computeArea());
+    }
    
    
 }

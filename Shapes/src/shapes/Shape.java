@@ -28,7 +28,9 @@ public abstract class Shape {
 
     public abstract boolean isBigger();
 
+   
+    public abstract boolean compareto(Shape s, Shape i);
+            
     
 
-    
 }

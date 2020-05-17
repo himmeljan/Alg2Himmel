@@ -11,5 +11,6 @@ package interfacevariant;
  */
 public interface Shapeinterface {
     public double computeArea();
-    
+
+    boolean isBigger(Shapeinterface o);
 }

@@ -34,6 +34,7 @@ public class Rectangle extends Shape  {
  /*   public double getArea() {
         return area;
     }*/
+   @Override
     public double computeArea(){
         return area;
     }
@@ -41,7 +42,20 @@ public class Rectangle extends Shape  {
     @Override
     public String toString() {
        // return "Rectangle{" + "a=" + a + ", b=" + b + '}';
-     return super.toString() +String.format(" r= .2f%,= .2f% ", a,b);
+     return super.toString() +String.format(" S = %.2f", area );
+    }
+
+    
+
+    @Override
+    public boolean isBigger() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean compareto(Shape s, Shape i) {
+        return s.computeArea() < i.computeArea();
+
     }
    
    

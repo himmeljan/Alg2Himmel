@@ -56,4 +56,15 @@ public class Main {
     }
         System.out.println(allArea3);
     }
+    public static void sortByNumber(ArrayList<Shapeinterface> shapes){
+        for (int i = 0; i < shapes.length-1; i++) {
+            for (int j = 1; j < shapes.length-i; j++) {
+                if(array[j-1].isBigger(array[j])){
+                    Student temp = array[j];
+                    array[j] = array[j-1];
+                    array[j-1] = temp;
+                }
+            }
+        }
+    }
 }

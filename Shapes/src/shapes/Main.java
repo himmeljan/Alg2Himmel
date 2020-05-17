@@ -54,5 +54,34 @@ public class Main {
         
     }
         System.out.println(allArea3);
+        Shape[] a= new Shape[3];
+        
+  
+        sort(shapes3);
+        print(shapes3);
+    }
+    
+    public static ArrayList sort(ArrayList<Shape> a ){
+        
+        
+        for(int i =0; i<a.size();i++){
+            for(int j = 1; j<a.size();j++){
+                if(a.get(j-1).computeArea() > a.get(j).computeArea()){
+                    Shape temp = a.get(j);
+                    Shape temp2 = a.get(j-1);
+                   // System.out.println(a.get(j));
+                    a.set(j, temp2);
+                    a.set(j-1,temp); 
+                    //System.out.println(a.get(j));
+                    
+                }
+            }
+        }
+        return a;
+    }
+    public static void print(ArrayList<Shape>q){
+        for (Shape q1 : q) {
+            System.out.println(q1);
+        }
     }
 }
