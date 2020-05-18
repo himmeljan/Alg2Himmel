@@ -68,11 +68,9 @@ public class Main {
             for(int j = 1; j<a.size();j++){
                 if(a.get(j-1).computeArea() > a.get(j).computeArea()){
                     Shape temp = a.get(j);
-                    Shape temp2 = a.get(j-1);
-                   // System.out.println(a.get(j));
+                    Shape temp2 = a.get(j-1);                   
                     a.set(j, temp2);
-                    a.set(j-1,temp); 
-                    //System.out.println(a.get(j));
+                    a.set(j-1,temp);                    
                     
                 }
             }

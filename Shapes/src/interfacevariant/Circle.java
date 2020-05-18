@@ -55,8 +55,9 @@ public class Circle implements Shapeinterface { //typove kompatibilni s shape
         
     }
 
+   
     @Override
-    public boolean isBigger() {
-        
+    public boolean isBigger(Shapeinterface o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

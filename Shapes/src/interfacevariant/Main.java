@@ -7,6 +7,7 @@ package interfacevariant;
 
 
 import java.util.ArrayList;
+import shapes.Shape;
 
 /**
  *
@@ -55,14 +56,17 @@ public class Main {
         
     }
         System.out.println(allArea3);
+        ArrayList shapes = new ArrayList(); 
+        
     }
     public static void sortByNumber(ArrayList<Shapeinterface> shapes){
-        for (int i = 0; i < shapes.length-1; i++) {
-            for (int j = 1; j < shapes.length-i; j++) {
-                if(array[j-1].isBigger(array[j])){
-                    Student temp = array[j];
-                    array[j] = array[j-1];
-                    array[j-1] = temp;
+        for (int i = 0; i < shapes.size()-1; i++) {
+            for (int j = 1; j < shapes.size()-i; j++) {
+                if(shapes.get(j-1).isBigger(shapes.get(j))){
+                    Shapeinterface temp = shapes.get(j);
+                    Shapeinterface temp2 = shapes.get(j-1);                   
+                    shapes.set(j, temp2);
+                    shapes.set(j-1,temp); 
                 }
             }
         }
