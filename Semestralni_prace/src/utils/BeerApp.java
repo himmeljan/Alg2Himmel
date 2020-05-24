@@ -18,7 +18,7 @@ static Scanner sc = new Scanner(System.in);
         
         
         while(true){
-            System.out.println("1. pridat pivo typ pocel litru");
+            System.out.println("1. pridat pivo typ pocet litru");
             System.out.println("vytvor pivo");
             System.out.println("2. mnozstvi na skladu + seradit podle x");
             System.out.println("vyhledat");

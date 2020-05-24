@@ -7,7 +7,7 @@ package comparingstudents;
 
 /**
  *
- * @author Honzik note
+ * @author jsn.himmel
  */
 public class Student implements CompareInterface{
     
@@ -22,6 +22,9 @@ public class Student implements CompareInterface{
         this.firstName = firstName;
         this.lastName = lastName;
         this.studentNumber = studentNumber;       
+    }
+    public String getLastName(){
+        return this.lastName;
     }
 
     public void setMarks(double[] marks) {
@@ -49,25 +52,18 @@ public class Student implements CompareInterface{
     
     @Override
     public String toString() {
-        return String.format("%10s%10s%10d%10d", firstName , lastName ,studentNumber, prumer);
+        return String.format("%10s%10s%10d", firstName , lastName ,studentNumber);
     }
     
-    public boolean sortName(Student student){
-        String abeceda = "abcdefghijklmnopqrstuvwxyz";
-        char s2 = student.lastName.charAt(0);
-        char s1 = lastName.charAt(0);
-        
-        System.out.println(s1+" "+s2);
-        if (abeceda.indexOf(s1)<abeceda.indexOf(s2)){
-            return true;
-        }else{
-            return false;
-        }
-       
-    }
+    
     public static void main(String[]args){
         Student s1 = new Student("jan","Himmel",1912);
-        Student s2 = new Student("petr","Bidak",1913);   
-        System.out.println(s1.sortName(s2));
+        Student s2 = new Student("petr","Zidak",1913);   
+        System.out.println(s1.isBigger(s2));
+    }
+
+    @Override
+    public boolean isBigger(CompareInterface o) {
+      return ((Student)o).lastName.charAt(0) < this.lastName.charAt(0);
     }
 }

@@ -4,12 +4,18 @@ import java.util.Scanner;
 
 /**
  * UI for card games e.g. Eleven game
- * @author janvit
+ * @author jan.himmel
  */
 public class ConsolaUI {
     public static Scanner sc = new Scanner(System.in);
     
     private BoardInterface board;
+    
+    public static void main(String[] args) {
+        ConsolaUI game = new ConsolaUI();
+        //GUI game = new GUI();
+        game.start();
+    }
     
     public void start() {
         boolean nextGame = true;
@@ -23,6 +29,7 @@ public class ConsolaUI {
     
     private void playGame(){
         System.out.println("***************** "+ board.gameName() + " ********************");
+        
         displayDeck();
         displayCards();
         while(board.anotherPlayIsPossible()){
@@ -57,7 +64,7 @@ public class ConsolaUI {
     private int[] toInt(String[] selectedCards) {
         int[] iSelectedCards = new int[selectedCards.length];
         for (int i = 0; i < selectedCards.length; i++) {
-            iSelectedCards[i] = Integer.parseInt(selectedCards[i]) - 1; //position to index
+            iSelectedCards[i] = Integer.parseInt(selectedCards[i])-1; //position to index
         }
         return iSelectedCards;
     }

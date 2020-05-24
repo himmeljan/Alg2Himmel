@@ -2,7 +2,7 @@ package elevengame;
 
 /**
  * Represents a card
- * @author janvit
+ * @author jan.himmel
  */
 public class Card {
     private String symbol; //suit
@@ -22,6 +22,12 @@ public class Card {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" + "symbol=" + symbol + ", value=" + value + ", nPoints=" + nPoints + '}';
+    }
+    
 
     public int getnPoints() {
         return nPoints;
