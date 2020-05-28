@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package competition;
+package app;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author Honzik note
  */
-public abstract class Writter {
-    public abstract void saveResults(String result)
+public class DataSource {
+      private ArrayList<Beer> beers;
+      private HashMap<Order, String> orders;
 }

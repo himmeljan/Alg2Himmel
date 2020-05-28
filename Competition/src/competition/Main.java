@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package competition;
 
 import java.io.FileNotFoundException;
@@ -7,31 +12,36 @@ import java.util.Scanner;
 
 /**
  *
- * @author janvit
+ * @author Honzik note
  */
 public class Main {
-    public static Scanner sc = new Scanner(System.in);
+public static Scanner sc =new Scanner(System.in);
     
     public static void main(String[] args) {
-        Competition c = new Competition();
+        Competition c = new Competition();   
         System.out.println("Zadej nazvy vstupnich souboru");
         try{
             while(true){
-                try {
-                    String startFile = sc.next();
-                    String finishFile = sc.next();
-                    c.load(startFile, finishFile);
-                    break;
+                try{
+                     String startfile  = sc.next();
+                     String finishfile = sc.next();
+                     c.load(startfile, finishfile);
+                     break;
                 }catch(FileNotFoundException e){
-                    System.out.println("Zadany neexistujici subor. Zadej znovu.");
+                     System.out.println("Zadany zly soubor");
                 }
             }
-                System.out.println(c.getResults());
-                //System.out.println("Zadej nazev vystupniho souboru");
-                //String resultFile = sc.next();
-                //c.saveResults(resultFile);
-        }catch(IOException e){
-            System.out.println("Chyba pri cteni a zapisu");
+            System.out.println(c.getResult());  
+
+            System.out.println("zadej nazev vystupniho souboru");
+            String resultFile = sc.next();
+            c.saveResult(resultFile);
+            System.out.println("data byla ulozena");
+    
+        }catch (IOException e){
+            System.out.println("Chyba pri cteni souboru");
+        }catch(NoSuchElementException e){
+            System.out.println(e.getMessage());       
         }
     }
 }

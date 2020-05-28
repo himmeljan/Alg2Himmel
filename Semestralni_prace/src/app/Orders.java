@@ -3,12 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package competition;
+package app;
+
+import java.util.ArrayList;
+import java.util.List;
+import utils.BeerInterface;
 
 /**
  *
  * @author Honzik note
  */
-public class TextWriter {
+public class Orders {
+    private List<Order> orders;
+ 
+    public void addOrder(Order o) {
+        this.orders.add(o);
+    }
+    
     
 }
