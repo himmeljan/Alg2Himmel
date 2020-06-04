@@ -5,7 +5,6 @@
  */
 package ui;
 
-
 import app.Order;
 import app.Shop;
 import compare.ComparatorByName;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
-
 
 import java.util.Scanner;
 import javax.mail.MessagingException;
@@ -29,21 +27,23 @@ import utils.ShopInterface;
 public class BeerApp {
 
     static Scanner sc = new Scanner(System.in);
-    
+
     private ShopInterface shop = new Shop();
 
     public static void main(String[] args) throws IOException, MessagingException {
         BeerApp app = new BeerApp();
-        
+
         Shop s = new Shop();
         s.load("beerfile.txt");
         app.start();
     }
+
     /**
-     * metoda spousti program a dava uzivateli na vyber, jaky rezim chce zvolit 
-     * @throws MessagingException 
+     * metoda spousti program a dava uzivateli na vyber, jaky rezim chce zvolit
+     *
+     * @throws MessagingException
      */
-    private void start() throws MessagingException{
+    private void start() throws MessagingException {
         System.out.println("Vítejte, jste zakazník ci prodejce: z/p");
         try {
             while (true) {
@@ -66,22 +66,24 @@ public class BeerApp {
             System.out.println("neplatny soubor");
         }
     }
+
     /**
      * metoda spravuje zakaznicke menu
+     *
      * @throws IOException
-     * @throws MessagingException 
+     * @throws MessagingException
      */
     private void costumer() throws IOException, MessagingException {
 
         System.out.println("*******Vitej v eShopu*******");
-       
+
         System.out.println("Aktualni nabidka piv: ");
         String beerfile = "beerfile.txt";
-        try{
+        try {
             shop.load(beerfile);
             String[] beers = shop.showBeers();
             show(beers);
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("file nenalezen");
         }
         boolean isRunning = true;
@@ -101,31 +103,32 @@ public class BeerApp {
                     break;
                 case 2:
                     choose();
-                    shop.makeOrder();
                     break;
                 case 3:
-                    System.out.println(shop.showCard());                  
-                    
+                    System.out.println(shop.showCard());
+
                     break;
                 case 4:
                     takeAway();
-                    break;                    
+                    break;
                 case 5:
                     finish();
-                    
+
                     System.out.println("Goodbye");
                     isRunning = false;
                     break;
                 default:
-                System.out.println("neplatna volba");
-                break;   
+                    System.out.println("neplatna volba");
+                    break;
 
             }
         }
     }
+
     /**
      * medota tridi piva podle zvolenych parametr
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void compare() throws IOException {
         String menu2 = "Jak chcete zbozi seradit?:"
@@ -138,114 +141,122 @@ public class BeerApp {
         switch (choice) {
             case 1:
                 shop.sortByPrize();
-                 String[] beers1 = shop.showBeers();
-                 show(beers1);
+                String[] beers1 = shop.showBeers();
+                show(beers1);
                 break;
             case 2:
-                 shop.sortByName();
-                 String[] beers2 = shop.showBeers();
-                 show(beers2);
+                shop.sortByName();
+                String[] beers2 = shop.showBeers();
+                show(beers2);
                 break;
             case 3:
-                 shop.getComparedResults();
-                 String[] beers3 = shop.showBeers();
-                 show(beers3);
+                shop.getComparedResults();
+                String[] beers3 = shop.showBeers();
+                show(beers3);
                 break;
             case 4:
                 System.out.println("Hledat: ");
                 String a = sc.next();
                 System.out.println(shop.find(a));
-                
-                
+
                 break;
             default:
                 System.out.println("neplatna volba");
                 break;
-                
+
         }
     }
+
     /**
      * metoda umoznuje uzivateli vybrat pivo z nabidky a umistit jej do kosiku
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void choose() throws IOException {
-        
-         System.out.println("Vyber si piva - zadej cislo a pocet lahvi");
-        boolean choose = true;
-        while(choose){
-            
-                int beerNum = sc.nextInt();
-                int nOfBottles = sc.nextInt();
-                int count =  shop.getBeers().size();
-               if(beerNum<=count && beerNum>0){
 
-                shop.addBeerToCard(beerNum, nOfBottles);
+        System.out.println("Vyber si piva - zadej cislo a pocet lahvi");
+        boolean choose = true;
+        while (choose) {
+
+            int beerNum = sc.nextInt();
+            int nOfBottles = sc.nextInt();
+            int count = shop.getBeers().size();
+            if (beerNum <= count && beerNum > 0) {
+
+                System.out.println(shop.addBeerToCard(beerNum, nOfBottles));
                 System.out.println("Chcete jeste neco pridat a/n");
                 choose = "a".equals(sc.next());
-               }else{
-                   System.out.println("neplatna volba");
-               }
+            } else {
+                System.out.println("neplatna volba");
+            }
 
         }
 
     }
+
     /**
      * metoda vynda zvoene pivo s kosiku
      */
     private void takeAway() {
         System.out.println("co chces vyhodit z kosiku");
         System.out.println(shop.showCard());
-        try{
+        try {
             int away = sc.nextInt();
             shop.remove(away);
             System.out.println(shop.showCard());
-        }catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("Pivo neni v seznamu");
         }
 
     }
+
     /**
-     * metoda vytvori soubor z objedanvkou a da uzivateli moznost ji poslat na mail
-     * pak ukonci program
-     * @throws MessagingException 
+     * metoda vytvori soubor z objedanvkou a da uzivateli moznost ji poslat na
+     * mail pak ukonci program
+     *
+     * @throws MessagingException
      */
-    private void finish() throws MessagingException{
+    private void finish() throws MessagingException {
         String card = shop.showCard();
         String num = shop.ganerateOrderNum();
         boolean rightAnswer = true;
-        try{
-        while(rightAnswer){
-            //System.out.println("binary 1 \ntext 2");
-            //int choice = sc.nextInt();
-            switch (2){//choice) {
-                case 1:
-                    shop.finishOrder(".dat",num,card);
-                    rightAnswer = false;
-                    break;
-                case 2:
-                    shop.finishOrder(".txt",num,card); //vytvori soubor s objednavkou
-                    if (shop.sendingEmail("martin.konak@email.cz", "ahoj")) {
-                        System.out.println("email odeslan");
-                    }else{
-                            System.out.println("chaba");
-                            }
-                    rightAnswer = false;
-                    break;
-                default:
-                    System.out.println("nelatna volba");
-                    break;
+        try {
+            while (rightAnswer) {
+                //System.out.println("binary 1 \ntext 2");
+                //int choice = sc.nextInt();
+                switch (2) {//choice) {
+                    case 1:
+                        shop.finishOrder(".dat", num, card);
+                        rightAnswer = false;
+                        break;
+                    case 2:
+                        shop.finishOrder(".txt", num, card); //vytvori soubor s objednavkou
+                        System.out.println("Zadejte emaila na který chcete poslat objednavku");
+                        String mail = sc.next();
+
+                        if (shop.sendingEmail(mail, card)) {
+                            System.out.println("email odeslan");
+                        } else {
+                            System.out.println("chyba");
+                        }
+                        rightAnswer = false;
+                        break;
+                    default:
+                        System.out.println("nelatna volba");
+                        break;
+                }
+
             }
-           
-        }
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("chyba");
         }
     }
+
     /**
      * administrator
      */
-    private void administrator() throws IOException  {
-        System.out.println("*****rezim administratora*****");     
+    private void administrator() throws IOException {
+        System.out.println("*****rezim administratora*****");
         boolean isRunning = true;
         while (isRunning) {
 
@@ -256,51 +267,51 @@ public class BeerApp {
                     + "\n 4 - pridat litry"
                     + "\n 5 - odstrait z nabidky"
                     + "\n 6 - exit";
-            
+
             System.out.println(menu1);
             int choice1 = sc.nextInt();
             switch (choice1) {
                 case 1:
-                    try{
+                    try {
                         String beerfile = "beerfile.txt";
                         shop.load(beerfile);
                         break;
-                    }catch(IOException e){
-                           System.out.println("Spatny soubor"); 
+                    } catch (IOException e) {
+                        System.out.println("Spatny soubor");
                     }
-                                
+
                 case 2:
-                   shop.loadOrders();
-                   while(true){
-                       System.out.println("Chcete zobazit objednaku? cislo:");
-                       int order = sc.nextInt();
-                       if(order>0){
-                       shop.showOrder(order);
-                       }else{
-                       break;
-                       }
-                   }
+                    shop.loadOrders();
+                    while (true) {
+                        System.out.println("Chcete zobazit objednaku? cislo:");
+                        int order = sc.nextInt();
+                        if (order > 0) {
+                            shop.showOrder(order);
+                        } else {
+                            break;
+                        }
+                    }
                     break;
                 case 3:
-                     shop.showCard();
-                     System.out.println("Zadej parametry: jmeno, stupnovitost, cena, pocet lahvi");
-                     String name = sc.next();
-                     String style = sc.next();
-                     double stupnovitot = sc.nextDouble();
-                     double prize = sc.nextDouble();
-                     shop.newBeer();
-                   
+                    shop.showCard();
+                    System.out.println("Zadej parametry: jmeno, stupnovitost, cena, pocet lahvi");
+                    String name = sc.next();
+                    String style = sc.next();
+                    double stupnovitot = sc.nextDouble();
+                    double prize = sc.nextDouble();
+                    shop.newBeer();
+
                     break;
                 case 4:
                     takeAway();
                     break;
-                case 6:                   
+                case 6:
                     isRunning = false;
                     System.out.println("Goodbye");
                     break;
                 default:
-                System.out.println("neplatna volba");
-                break;
+                    System.out.println("neplatna volba");
+                    break;
             }
         }
     }
@@ -326,19 +337,20 @@ public class BeerApp {
         return false;
 
     }
+
     /**
-     * metoda vypisuje pole 
-     * @param beers piva 
+     * metoda vypisuje pole
+     *
+     * @param beers piva
      */
-    public static void show(String[] beers){
-        if(beers == null){
-            System.out.println("nic tu neni"); 
-        }else{
+    public static void show(String[] beers) {
+        if (beers == null) {
+            System.out.println("nic tu neni");
+        } else {
             for (String beer : beers) {
                 System.out.println(beer);
             }
         }
     }
-
 
 }

@@ -1,0 +1,3 @@
+Vase objednavka
+1. Pilser      12.0°   25.0Kc   5 lahvi 
+Cena objednavky je 125.0

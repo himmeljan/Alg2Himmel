@@ -61,7 +61,7 @@ public class Order {
      * @param b vyber co zvolime
      * @param nBottles pocet lahvi
      */
-    public void addToCard(Beer b, int nBottles) {
+    public String addToCard(Beer b, int nBottles) {
         if (b.isInStorage(nBottles)) {
             if (!isBeerInCard(b)) {
                 card.put(b, nBottles);
@@ -76,12 +76,13 @@ public class Order {
                 }
                 b.takeBottles(nBottles);
             }
+            return "Zbozi pridano do kosiku";
            
 
-        } else {
-            String mess="nedostatek na skladu, na skladu je pouze " + b.getnOfBottles() + " lahvi";
-
-        }
+        } 
+        String mess="nedostatek na skladu, na skladu je pouze " + b.getnOfBottles() + " lahvi";
+        return mess;
+        
     }
     /**
      * metoda spocita cenu vsech piv v kosiku
@@ -147,7 +148,7 @@ public class Order {
     }
      */
     /**
-     * metoda se pta jestli je na sklade dostatek lahvi
+     * metoda se pta jestli je pivo uz v kosiku
      * @param b pivo
      * @return true -je/false - neni
      */

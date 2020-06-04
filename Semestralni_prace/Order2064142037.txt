@@ -1,0 +1,3 @@
+Vase objednavka
+1. Albrecht    11.0°   40.0Kc   11 lahvi 
+Cena objednavky je 440.0

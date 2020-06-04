@@ -38,15 +38,16 @@ public interface ShopInterface {
     /**
      * metoda vytvori objednavku a pridava ji do kosiku
      * @param name  -nazev piva co chceme pridat
-     * @param nOfBottles  -pocet lahvi co chce zakaznik koupit
+     * @param nOfBottles  -pocet lahvi co chce zakaznik koupit 
      */
     public void addBeerToCard(String  name, int nOfBottles);
     /**
      * metoda pridava zvolene pivo do kosiku 
      * @param num zvolene pivo
      * @param nOfBottles pocet lahvi co chce zakazik koupit
+     * @return vzkaz pro uzivatele
      */
-    public void addBeerToCard(int num, int nOfBottles);
+    public String addBeerToCard(int num, int nOfBottles);
     
     public ArrayList<Beer> getComparedResults() throws IOException;
     
@@ -101,12 +102,12 @@ public interface ShopInterface {
      * metoda prida nove pivo do seznamu
      */
     public void newBeer();
-     /**
-     * metoda vytvori novou objednavku
+
+    
+    /**
+     * metoda ukazuje seznam piv
      * @return 
      */
-    public void makeOrder();
-
     public String[] showBeers();
 
     //public void sortByGrade();

@@ -100,8 +100,8 @@ public class Shop implements ShopInterface {
     }
     
     @Override
-    public void addBeerToCard(int num, int nOfBottles){
-        order.addToCard(beers.get(num-1), nOfBottles);
+    public String addBeerToCard(int num, int nOfBottles){
+        return order.addToCard(beers.get(num-1), nOfBottles);
     }
     
     @Override
@@ -239,7 +239,7 @@ public class Shop implements ShopInterface {
     @Override
     public String showCard() {
         if(!order.getCard().isEmpty()){
-            String prize = "Cena objednavky je "+order.countPrize();
+            String prize = "Cena objednavky je "+order.countPrize() + "Kc";
             String a = order.toString() + prize;
         
             return a;
@@ -253,16 +253,9 @@ public class Shop implements ShopInterface {
     }
 
     @Override
-    public void makeOrder() {
-        Order o = new Order();
-        orders.add(o);
-
-    }
-    
-    @Override
     public boolean sendingEmail(String to, String mess) throws AddressException, MessagingException {
         try {
-            String from = "m.konis197@gmail.com";
+            String from = "jan.himmel357@gmail.com";
 
             Properties prop = System.getProperties();
             prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -275,7 +268,7 @@ public class Shop implements ShopInterface {
                     new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("martinkonakTUL@gmail.com", "konak122");
+                    return new PasswordAuthentication("jan.himmel357@gmail.com", "heslo1654321");
                     }
             });
             
@@ -283,7 +276,7 @@ public class Shop implements ShopInterface {
             msg.setFrom(new InternetAddress(from));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-            msg.setSubject("Recipe");
+            msg.setSubject("Your order");
             msg.setText(mess);
             Transport.send(msg);
             return true;
