@@ -1,0 +1,7 @@
+1 Kozel       11 20  50 
+2 Budvar      13 30  40
+3 Raven       15 45  15
+4 Pilser      12 25  10
+5 Kocour      11 28  20
+6 Albrecht    11 40  14
+7 Breznak     11 15  11

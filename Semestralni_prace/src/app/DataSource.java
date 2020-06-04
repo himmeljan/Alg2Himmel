@@ -10,9 +10,15 @@ import java.util.HashMap;
 
 /**
  *
- * @author Honzik note
+ * @author jan.himmel
  */
 public class DataSource {
-      private ArrayList<Beer> beers;
-      private HashMap<Order, String> orders;
+      
+      public static Beer[] beer={
+      new Beer("kal", 13 , 52,100),
+      new Beer("fer", 11 , 12,100),
+      new Beer("msrikal", 14 , 42,50),
+      new Beer("cgod", 13 , 982,500),
+      new Beer("vjod", 15 , 11,1215)};
+              
 }

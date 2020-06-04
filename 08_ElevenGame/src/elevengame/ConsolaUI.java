@@ -15,6 +15,7 @@ public class ConsolaUI {
         ConsolaUI game = new ConsolaUI();
         //GUI game = new GUI();
         game.start();
+        
     }
     
     public void start() {

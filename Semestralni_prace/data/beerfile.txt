@@ -1,7 +1,0 @@
-Kozel     lager   11° 20Kc  50 
-Apa       ale     13° 30Kc  40
-Imperial  scout   15° 45Kc  15
-Pilser    lager   12° 25Kc  10
-Ipa       ale     11° 28Kc  20
-Euakvanox ale     11° 40Kc  14
-Kolsch    lager   11° 15Kc  11

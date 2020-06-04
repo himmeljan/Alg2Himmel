@@ -6,81 +6,84 @@
 package app;
 
 import java.io.File;
-import utils.ComparatorInterface;
+
+import compare.ComparingInterface;
+import java.util.Comparator;
 
 /**
  *
- * @author Honzik note
+ * @author jan.himmel
  */
-public class Beer implements ComparatorInterface {
+public class Beer implements/* Comparable<Beer>,*/ComparingInterface{
     //nektere vlasnosti ubrany pro prehlednost - v pripade potreby odkomentovat
     //private int IBU; //horkost
    // private int EBC;  //barva
-    private double ABV;  //procent alkoholu
-    private double stupnovitost;
-    private String style;
+    //private double ABV;  //procent alkoholu
+    private double grade;
+   // private String style;
     private String name;
     private int nOfBottles;
-    private String popis; 
+    
    // private File recept;
     private double prize;
 
-    public Beer(String name, String style, double stupnovitost, double prize) {
+    public Beer(String name, double grade, double prize,int nOfBottles ) {
         
-        this.ABV = ABV;
-        this.stupnovitost = stupnovitost;
-        this.style = style;
+        this.nOfBottles = nOfBottles;
+        this.grade = grade;
+       
         this.name = name;
+        this.prize = prize;
+    }
+
+    public double getPrize() {
+        return prize;
     }
 
     public int getnOfBottles() {
         return nOfBottles;
     }
-
-    
-    
+    /**
+     * metoda prida nove lahve
+     * @param bottles
+     */
     public void addBottles(int bottles){
         this.nOfBottles = nOfBottles + bottles;
     }
-    
+    /**
+     * metoda odebere lahve
+     * @param bottles
+     */
     public void takeBottles(int bottles){        
              this.nOfBottles = nOfBottles - bottles;
     }    
     
-    public void loadRecipe(){
-        
-    }
-
+    /**
+     * metoda zjistuje jestli je pivo na sklade
+     * @param Bottles
+     * @return 
+     */
     public boolean isInStorage(int Bottles) {
-       return (nOfBottles>Bottles);
+       return (nOfBottles>=Bottles);
 
     }
-
-    public double getABV() {
-        return ABV;
-    }
-    
+   
    /* @Override
     public int compareTo(Beer b) {
-        if(this.ABV < b.getABV()){
-            return 1;
-        }else{
-            return -1;
-        }
-
-    }*/
-
+        return 1;
+    }
+*/
     public String getName() {
         return name;
     }
 
     @Override
     public String toString() {
-        return   String.format("%-15s%-8s%-8s%-8s%-10s ", name, style,
-                stupnovitost + "°", prize + "Kc", getnOfBottles() + " lahvi" );   
+        return   String.format("%-12s%-8s%-8s ", name,
+                grade+ "°", prize + "Kc ");   
     }
 
-    @Override
+   /* @Override
     public boolean compareByName(Beer b1, Beer b2) {
         if(b1.getName().charAt(0)>b2.getName().charAt(0)){
             return true;
@@ -88,26 +91,27 @@ public class Beer implements ComparatorInterface {
             return false;
         }
 
+    }*/
+
+    private double getGrade() {
+        return grade;
+    }
+    /**
+     * metoda tridi podle stupnovitosti piva
+     * @param o
+     * @return 
+     */
+    @Override
+    public boolean isBigger(ComparingInterface o) {
+        return (this.grade < ((Beer) o).grade);
+       
     }
 
-    @Override
-    public boolean compareByAlcohol(Beer b1, Beer b2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
-    @Override
-    public void ale() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
-    @Override
-    public void scout() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void lager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
+
 }

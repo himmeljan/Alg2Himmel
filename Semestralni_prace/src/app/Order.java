@@ -8,52 +8,110 @@ package app;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import utils.BeerInterface; 
 
 /**
  *
- * @author Honzik note
+ * @author jan.himmel
  */
+public class Order {
 
-public class Order {    
-    private List<Beer> card;
+    private HashMap<Beer, Integer> card = new HashMap<>();
     private final LocalDateTime timeOrder;
-    private final long nOfDays;
+    private int nOfDays;
     private final LocalDateTime exDate;
     public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM dd");
-   
-   
-    //nastavi cas objednavky v okamziku jejiho vytvoreni
-    public Order(long nOfDays){
-        this.nOfDays = nOfDays; 
-        
-        this.timeOrder =LocalDateTime.now();
-        
+
+    //nastavi cas objednavky v okamziku jejiho vytvoreni 
+    public Order() {
+
+        this.timeOrder = LocalDateTime.now();
+
         this.exDate = timeOrder.plusDays(nOfDays);
     }
-    
-    //metoda prida kosik
-    public void  addToKosik(Beer b, int nBottles){   
-        if(b.isInStorage(nBottles)){ 
-            this.card.add(b);
-            b.takeBottles(nBottles);
-        
-        }else{
-            System.out.println("nedostatek na skladu, na skladu je pouze "+ b.getnOfLitres()+ " lahvi");
-        
+
+    public LocalDateTime getTimeOrder() {
+        return timeOrder;
     }
-    }
-    //formatuje pocet zadanzch dnu na cas
-    
-    
-    public String  myOrder(){
+
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < card.size(); i++){
-             sb.append(card.get(i));
+        int i = 1;
+        for (Beer beer : card.keySet()) {
+            sb.append(i).append(". ");
+            sb.append(beer.toString());
+            sb.append(card.get(beer));
+            sb.append(" lahvi \n");
+            i++;
         }
         String a = sb.toString();
         return a;
+    }
+
+    public void setnOfDays(int nOfDays) {
+        this.nOfDays = nOfDays;
+    }
+
+    /**
+     * metoda vraci jestli je jeste cas na vyrizeni objednvky
+     *
+     * @param b vyber co zvolime
+     * @param nBottles pocet lahvi
+     */
+    public void addToCard(Beer b, int nBottles) {
+        if (b.isInStorage(nBottles)) {
+            if (!isBeerInCard(b)) {
+                card.put(b, nBottles);
+               
+            } else {
+                for (Beer beer : card.keySet()) {
+                    if (beer == b) {
+                        int a = card.get(beer);
+                        card.replace(beer, nBottles + a);
+
+                    }
+                }
+                b.takeBottles(nBottles);
+            }
+           
+
+        } else {
+            String mess="nedostatek na skladu, na skladu je pouze " + b.getnOfBottles() + " lahvi";
+
+        }
+    }
+    /**
+     * metoda spocita cenu vsech piv v kosiku
+     * @return vraci cenu
+     */
+    public double countPrize(){
+        double value=0;
+        for (Beer beer : card.keySet()) {
+            value  =value + beer.getPrize()*card.get(beer);            
+        }
+        return value;
+    }
+    /**
+     * metoda odstrani piv z kosiku
+     * @param away 
+     */
+    public void remove(int away) {
+        int i = 1;
+        for (Beer beer : card.keySet()) {
+            if (i == away) {
+                card.remove(beer);
+            }
+            i++;
+
+        }
+
+    }
+
+    public HashMap<Beer, Integer> getCard() {
+        return card;
     }
 
     public LocalDateTime getTimeInOrder() {
@@ -63,36 +121,43 @@ public class Order {
     public LocalDateTime getExDate() {
         return exDate;
     }
-    
-        //metoda vraci jestli je jeste cas na vyriyeni objednvky idealn bz by bylo udelat casovac kolik casu a to je 
-    public boolean getTimeToEnd(){
-       LocalDateTime a =  LocalDateTime.now();
-       return a.isAfter(getExDate());
-        
+
+    /**
+     * metoda vraci jestli je jeste cas na vyrizeni objednvky
+     *
+     * @return metoda vraci true nebo false
+     */
+    public boolean getTimeToEnd() {
+        LocalDateTime a = LocalDateTime.now();
+        return a.isAfter(getExDate());
+
     }
-        
 
 
+    /*
     public static void main(String[] args){
-        Order o1 = new Order(10);
-        System.out.println(o1.getTimeInOrder());
-        System.out.println(o1.getExDate());
-        o1.getTimeToEnd();
+        Order o = new Order();
+        Beer[] br = DataSource.beer;
+        for (int i = 0; i < br.length; i++) {
+             o.addToCard(br[i], i+2);
+            
+        }
+        System.out.println(o);
         
     }
+     */
+    /**
+     * metoda se pta jestli je na sklade dostatek lahvi
+     * @param b pivo
+     * @return true -je/false - neni
+     */
+    private boolean isBeerInCard(Beer b) {
+        for (Beer card1 : card.keySet()) {
+            if (card1 == b) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-   
-
-
-        
-    
-    
-       
-        
 }
-    
-    
-    
-    
-    
-

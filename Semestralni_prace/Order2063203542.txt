@@ -1,0 +1,4 @@
+Vase objednavka1. Kocour      11.0°   28.0Kc   12 lahvi 
+2. Budvar      13.0°   30.0Kc   3 lahvi 
+3. Raven       15.0°   45.0Kc   12 lahvi 
+Cena onjednavky je 966.0

@@ -1,0 +1,4 @@
+Vase objednavka1. Kozel       11.0°   20.0Kc   20 lahvi 
+2. Pilser      12.0°   25.0Kc   3 lahvi 
+3. Albrecht    11.0°   40.0Kc   4 lahvi 
+Cena onjednavky je 635.0

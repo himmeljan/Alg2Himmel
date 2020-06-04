@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
-
-import app.Order;
+package compare;
 
 /**
  *
- * @author Honzik note
+ * @author jan.himmel
  */
-public interface BeerInterface {
-    
-    
-
-    public void addOrder();
+public interface ComparingInterface {
+    public boolean isBigger(ComparingInterface o);
 }
