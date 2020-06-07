@@ -2,7 +2,7 @@ package cmd;
 
 /**
  *
- * @author janvit
+ * @author jan.himel
  */
 public interface CmdInterface {
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author janvit
+ * @author jan.himmel
  */
 public class CmdUI {
     public static Scanner sc = new Scanner(System.in);
@@ -23,4 +23,5 @@ public class CmdUI {
             }
         }
     }
+
 }

@@ -2,7 +2,7 @@ package cmd;
 
 /**
  *
- * @author janvit
+ * @author jan.himmel
  */
 public class Parser {
        
@@ -20,4 +20,5 @@ public class Parser {
            throw new RuntimeException("Nepodarilo se prikaz naparsovat.");
         }
     }
+    
 }

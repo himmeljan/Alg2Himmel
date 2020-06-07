@@ -1,0 +1,3 @@
+Vase objednavka
+1. Kozel       11.0°   20.0Kc   20 lahvi 
+Cena objednavky je 400.0Kc

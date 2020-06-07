@@ -1,0 +1,5 @@
+Vase objednavka
+1. Raven       15.0°   45.0Kc   12 lahvi 
+2. Breznak     11.0°   15.0Kc   2 lahvi 
+3. Kozel       11.0°   20.0Kc   5 lahvi 
+Cena objednavky je 670.0Kc

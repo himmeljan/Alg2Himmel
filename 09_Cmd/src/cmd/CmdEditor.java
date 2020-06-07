@@ -4,10 +4,10 @@ import java.io.File;
 
 /**
  *
- * @author janvit
+ * @author jan.himmel
  */
 public class CmdEditor implements CmdInterface {
-    private boolean isRunning;
+    public static boolean isRunning;
     private File actualDir;
     private Command command;    
     
@@ -33,5 +33,8 @@ public class CmdEditor implements CmdInterface {
         //execute 
         isRunning = false;
         return command.execute(actualDir);
+    }
+    public static void changeRunning() {
+        isRunning = !(isRunning);
     }
 }

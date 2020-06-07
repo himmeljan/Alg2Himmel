@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  *
- * @author janvit
+ * @author jan.himmel
  */
 public class Help extends Command{
 

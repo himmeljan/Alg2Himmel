@@ -1,0 +1,5 @@
+Vase objednavka
+1. Kozel       11.0°   20.0Kc   2 lahvi 
+2. Raven       15.0°   45.0Kc   6 lahvi 
+3. Pilser      12.0°   25.0Kc   5 lahvi 
+Cena objednavky je 435.0Kc

@@ -1,0 +1,4 @@
+Vase objednavka
+1. Budvar      13.0°   30.0Kc   10 lahvi 
+2. Raven       15.0°   45.0Kc   5 lahvi 
+Cena objednavky je 525.0Kc

@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  *
- * @author janvit
+ * @author jan.himmel
  */
 public abstract class Command {
     public static String COMMAND_PACKAGE = "cmd";
