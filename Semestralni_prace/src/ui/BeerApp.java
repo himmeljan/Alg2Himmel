@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.MessagingException;
 import utils.ShopInterface;
 
@@ -233,13 +235,18 @@ public class BeerApp {
                         shop.finishOrder(".txt", num, card); //vytvori soubor s objednavkou
                         System.out.println("Zadejte emaila na který chcete poslat objednavku");
                         String mail = sc.next();
+                        if(checkMail(mail)){
 
-                        if (shop.sendingEmail(mail, card)) {
-                            System.out.println("email odeslan");
-                        } else {
-                            System.out.println("chyba");
+                            if (shop.sendingEmail(mail, card)) {
+                                System.out.println("email odeslan");
+                            } else {
+                                System.out.println("chyba");
+                            }
+                            rightAnswer = false;
+                        }else{
+                            System.out.println("spatne zadany mail");
                         }
-                        rightAnswer = false;
+                        
                         break;
                     default:
                         System.out.println("nelatna volba");
@@ -250,6 +257,11 @@ public class BeerApp {
         } catch (IOException e) {
             System.out.println("chyba");
         }
+    }
+     public static boolean checkMail(String s) {
+        Pattern p = Pattern.compile("\"[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\"");
+        Matcher m = p.matcher(s);
+        return m.find();
     }
 
     /**

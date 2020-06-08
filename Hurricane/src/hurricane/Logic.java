@@ -7,7 +7,10 @@ package hurricane;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -17,23 +20,23 @@ import java.util.Scanner;
  * @author Honzik note
  */
 public class Logic {
-    
+    public static File dataDirectory = new File(System.getProperty("user.dir") + File.separator + "data");
     private ArrayList<Hurricane> hurricanes =new ArrayList<Hurricane>();
 
-    void load(String hur) throws FileNotFoundException {
-        File file = new File(hur);
-        System.out.println("blbl");
+    void load(String hurData) throws FileNotFoundException {
+        File file = new File(dataDirectory, hurData);
+      
         try(Scanner sc = new Scanner(file)){
             while(sc.hasNext()){
                 int year = sc.nextInt();
-                System.out.println(year);
+
                 String mounth = sc.next();
                 int pressure = sc.nextInt();
                 int speed = sc.nextInt();
                 String name = sc.next();
                 
                 Hurricane hurricane= new Hurricane(year,mounth,pressure,speed,name);
-                System.out.println(hurricane);
+              
                 
                 hurricanes.add(hurricane);
             }
@@ -41,11 +44,15 @@ public class Logic {
         
 
     }
-    void write(String fileName) throws FileNotFoundException{      
+    void write(String fileName) throws FileNotFoundException, UnsupportedEncodingException, IOException{      
         Collections.sort(hurricanes);
-        try(PrintWriter pw = new PrintWriter(fileName)){
+        
+        File file = new File(dataDirectory, fileName);
+        FileWriter fileWrite = new FileWriter(file,true);
+        try(PrintWriter pw = new PrintWriter(fileWrite)){
             for (Hurricane hurricane : hurricanes) {
                 pw.println(hurricane);
+                pw.print("+");
                 
             }
        //   pw.close();

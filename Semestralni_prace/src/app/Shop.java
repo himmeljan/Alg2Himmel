@@ -45,7 +45,7 @@ public class Shop implements ShopInterface {
     private ArrayList<Beer> beers = new ArrayList<>();
     private ArrayList<Order> orders = new ArrayList<>();
     private Order order;
-
+    public static File dataDirectory = new File(System.getProperty("user.dir") + File.separator + "data");
 
     public Shop() {
        this.order  = new Order();
@@ -54,7 +54,7 @@ public class Shop implements ShopInterface {
     @Override
     public void load(String beerfile) throws FileNotFoundException, IOException {
         //nacitani scanner
-        File beerFile = new File(beerfile);
+        File beerFile = new File(dataDirectory,beerfile);
         try (Scanner sc = new Scanner(beerFile)) {
             
             while (sc.hasNext()) {

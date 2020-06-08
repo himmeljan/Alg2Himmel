@@ -33,14 +33,12 @@ public class TextWriter extends Writer{
     }
 
     public static void addOrder(String file) throws IOException {
-        PrintWriter writer = null;
+        
         
             FileWriter fw = new FileWriter(file, true);
-            writer = new PrintWriter(fw);
-         
-  
-        writer.println("ahoj");
-        writer.close();
+        try (PrintWriter writer = new PrintWriter(fw)) {
+            writer.println("ahoj");
+        }
     }
     
 
